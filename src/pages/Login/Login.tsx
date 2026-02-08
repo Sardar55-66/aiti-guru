@@ -7,6 +7,12 @@ import Button from '../../shared/ui/Button/Button';
 import Checkbox from '../../shared/ui/Checkbox/Checkbox';
 import styles from './Login.module.scss';
 
+import logoImg from '../../assets/loginpage-logo.png';
+import userIcon from '../../assets/user-icon.png';
+import lockIcon from '../../assets/lock-03.png';
+import eyeOnIcon from '../../assets/eye-on.png';
+import eyeOffIcon from '../../assets/eye-off.png';
+
 export default function Login() {
   const login = useAuthStore(s => s.login);
   const navigate = useNavigate();
@@ -47,7 +53,7 @@ export default function Login() {
   return (
     <div className={styles.page}>
       <div className={styles.card}>
-        <img className={styles.logoImg} src="/src/assets/loginpage-logo.png" alt="logo" />
+        <img className={styles.logoImg} src={logoImg} alt="logo" />
         <h1 className={styles.title}>Добро пожаловать!</h1>
         <p className={styles.subtitle}>Пожалуйста, авторизируйтесь</p>
 
@@ -57,7 +63,7 @@ export default function Login() {
           value={username}
           onChange={e => setUsername(e.target.value)}
           placeholder="test"
-          iconLeft={<img src="/src/assets/user-icon.png" alt="user-icon" />}
+          iconLeft={<img src={userIcon} alt="user-icon" />}
           onClear={() => setUsername('')}
           error={error && !username.trim() ? 'Заполните логин' : undefined}
           wrapperClassName={styles.loginInputWrapper}
@@ -70,10 +76,10 @@ export default function Login() {
           value={password}
           onChange={e => setPassword(e.target.value)}
           placeholder="Введите пароль"
-          iconLeft={<img src="/src/assets/lock-03.png" alt="lock-icon" />}
+          iconLeft={<img src={lockIcon} alt="lock-icon" />}
           iconRight={
             <img
-              src={showPassword ? "/src/assets/eye-off.png" : "/src/assets/eye-on.png"}
+              src={showPassword ? eyeOffIcon : eyeOnIcon}
               alt="toggle-password"
               onClick={() => setShowPassword(v => !v)}
               style={{ cursor: 'pointer', width: '24px', height: '24px' }}
