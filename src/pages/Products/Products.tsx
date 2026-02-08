@@ -209,7 +209,7 @@ export default function Products() {
               <Checkbox
                   checked={allSelected}
                   onCheckedChange={toggleAll}
-                  style={{ marginRight: 4 }}
+                  style={{ marginRight: 4, marginTop: '15px' }}
                 />
               </TableCell>
               <TableCell>
@@ -249,7 +249,7 @@ export default function Products() {
                   <Checkbox
                     checked={selectedIds.has(p.id)}
                     onCheckedChange={() => toggleRow(p.id)}
-                    style={{ marginRight: 4 }}
+                    style={{ marginRight: 4, marginTop: '15px' }}
                   />
                 </TableCell>
                 <TableCell>
