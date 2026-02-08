@@ -1,0 +1,67 @@
+.button {
+    height: 44px;
+    padding: 0 20px;
+    border-radius: 10px;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+  }
+  
+  /* по умолчанию */
+  .primary {
+    background-color: #242edb;
+    color: #fff;
+  
+    &:hover:not(:disabled) {
+      background-color: #1f27c0;
+    }
+  
+    &:active:not(:disabled) {
+      transform: translateY(1px);
+    }
+  }
+  
+  .secondary {
+    background-color: #FFFFFF;
+    color: #242edb;
+  
+    &:hover:not(:disabled) {
+      background-color: #e9ecff;
+    }
+  }
+  
+  .ghost {
+    background: transparent;
+    color: #242edb;
+  
+    &:hover:not(:disabled) {
+      background: rgba(36, 46, 219, 0.08);
+    }
+  }
+
+  .ghostNoHover {
+    background: transparent;
+    color: #242edb;
+  }
+  
+  .button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .loading {
+    cursor: wait;
+  }
+
+  .noHover {
+    &:hover {
+      background: inherit; // убираем ховер
+    }
+  }
+  

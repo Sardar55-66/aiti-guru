@@ -1,0 +1,65 @@
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .label {
+    font-size: 13px;
+    color: #1a1a1a;
+  }
+  
+  .wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 44px;
+    padding: 0 12px;
+    border-radius: 10px;
+    border: 1px solid #e2e4ea;
+    background: #fff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  
+    &:focus-within {
+      border-color: #242edb;
+      box-shadow: 0 0 0 2px rgba(36, 46, 219, 0.15);
+    }
+  }
+  
+  .input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    background: transparent;
+  }
+  
+  .iconLeft,
+  .iconRight {
+    display: flex;
+    align-items: center;
+    color: #8b8fa3;
+  }
+  
+  .clear {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #9aa0b4;
+    padding: 0;
+  }
+  
+  .error {
+    border-color: #e5484d;
+  
+    &:focus-within {
+      box-shadow: 0 0 0 2px rgba(229, 72, 77, 0.15);
+    }
+  }
+  
+  .errorText {
+    font-size: 12px;
+    color: #e5484d;
+  }
+  
