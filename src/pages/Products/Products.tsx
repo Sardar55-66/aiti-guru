@@ -3,6 +3,7 @@ import Input from '../../shared/ui/Input/Input';
 import PaginationRounded from '../../shared/ui/Pagination/PaginationRounded';
 import LinearDeterminate from '../../shared/ui/Loader/Loader';
 import Checkbox from '../../shared/ui/Checkbox/Checkbox';
+import UiButton from '../../shared/ui/Button/Button';
 import {
   TableContainer,
   Table,
@@ -23,6 +24,8 @@ import {
 import { useProductsStore, type SortField } from '../../store/products.store';
 import type { Product } from '../../shared/types/product';
 import styles from './Products.module.scss';
+
+import dotsIcon from '../../assets/dots-icon.png';
 
 const SEARCH_DEBOUNCE_MS = 400;
 
@@ -61,16 +64,6 @@ function PlusIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M12 5v14M5 12h14" />
-    </svg>
-  );
-}
-
-function DotsIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-      <circle cx="12" cy="6" r="1.5" />
-      <circle cx="12" cy="12" r="1.5" />
-      <circle cx="12" cy="18" r="1.5" />
     </svg>
   );
 }
@@ -141,10 +134,6 @@ export default function Products() {
     [setSort]
   );
 
-  const handleRefresh = useCallback(() => {
-    loadProducts();
-  }, [loadProducts]);
-
   const handleRefreshClick = useCallback(() => {
     setRefreshSpinning(true);
     loadProducts();
@@ -159,17 +148,16 @@ export default function Products() {
 
   return (
     <div className={styles.productMainWrapper}>
-      {/* Progress bar при подгрузке */}
-      {loading && (
-        <div className={styles.progressStrip}>
+      {loading ? (
+        <div className={styles.loaderOnly}>
           <div className={styles.loader}>
             <LinearDeterminate />
           </div>
         </div>
-      )}
-
-      {/* Header */}
-      <div className={styles.header}>
+      ) : (
+        <>
+          {/* Header */}
+          <div className={styles.header}>
         <h1 className={styles.headerTitle}>Товары</h1>
         <div className={styles.searchWrap}>
           <Input
@@ -287,15 +275,23 @@ export default function Products() {
                   </span>
                 </TableCell>
                 <TableCell>{formatPrice(p.price)}</TableCell>
-                <TableCell padding="checkbox">
-                  <IconButton className={styles.btnIcon} size="small" aria-label="Добавить">
-                    <PlusIcon />
-                  </IconButton>
+                <TableCell padding="checkbox" className={styles.cellActions}>
+                  <UiButton
+                    variant="primary"
+                    className={styles.btnTableAdd}
+                    aria-label="Добавить"
+                  >
+                    +
+                  </UiButton>
                 </TableCell>
-                <TableCell padding="checkbox">
-                  <IconButton className={styles.btnIcon} size="small" aria-label="Ещё">
-                    <DotsIcon />
-                  </IconButton>
+                <TableCell padding="checkbox" className={styles.cellActions}>
+                  <button
+                    type="button"
+                    className={styles.btnTableDots}
+                    aria-label="Ещё"
+                  >
+                    <img src={dotsIcon} alt="" />
+                  </button>
                 </TableCell>
               </TableRow>
             ))}
@@ -303,19 +299,21 @@ export default function Products() {
         </Table>
       </TableContainer>
 
-      {/* Footer: пагинация */}
-      <div className={styles.footerWrapper}>
-        <div>
-          Показано {from}-{to} из {total}
-        </div>
-        <PaginationRounded
-          page={page}
-          count={totalPages}
-          onChange={(_, value) => {
-            if (value !== page) setPage(value);
-          }}
-        />
-      </div>
+          {/* Footer: пагинация */}
+          <div className={styles.footerWrapper}>
+            <div>
+              Показано {from}-{to} из {total}
+            </div>
+            <PaginationRounded
+              page={page}
+              count={totalPages}
+              onChange={(_, value) => {
+                if (value !== page) setPage(value);
+              }}
+            />
+          </div>
+        </>
+      )}
 
       {/* Модалка добавления товара */}
       <Dialog open={addModalOpen} onClose={() => setAddModalOpen(false)} maxWidth="sm" fullWidth>

@@ -66,6 +66,7 @@ export default function Login() {
           iconLeft={<img src={userIcon} alt="user-icon" />}
           onClear={() => setUsername('')}
           error={error && !username.trim() ? 'Заполните логин' : undefined}
+          className={styles.loginInputField}
           wrapperClassName={styles.loginInputWrapper}
         />
 
@@ -86,6 +87,7 @@ export default function Login() {
             />
           }
           error={error && !password.trim() ? 'Заполните пароль' : undefined}
+          className={styles.loginInputField}
           wrapperClassName={styles.loginInputWrapper}
         />
 

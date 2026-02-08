@@ -54,7 +54,7 @@
 
 .progressStrip {
   position: sticky;
-  top: 0;
+  top: 50%;
   z-index: 10;
   width: 100%;
 }
@@ -82,7 +82,7 @@
   tr {
     border-bottom: 1px solid #e5e7eb;
   }
-  
+
 
   th {
     cursor: pointer;
@@ -110,12 +110,6 @@
   }
 }
 
-.tableHeaderWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .ratingLow {
   color: #dc2626;
   font-weight: 500;
@@ -126,18 +120,18 @@
   background: #fff;
 }
 
-.searchInput {
-  background-color: #CFCFCF;
-  color: #F3F3F3;
-  width: 70%;
-  height: 44px;
-  padding: 20px 12px;
-  border: none;
-  border-radius: 8px;
-}
+.loaderOnly {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+  width: 100%;
 
-.divider {
-  width: 150px;
+  .loader {
+    width: 100%;
+    max-width: 400px;
+  }
 }
 
 .productImageIcon {
@@ -166,6 +160,50 @@
   color: #6b7280;
 }
 
+.cellActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Синяя кнопка-пилюля с плюсом (универсальный Button + кастомные стили) */
+.btnTableAdd {
+  min-width: auto;
+  height: 27px;
+  padding: 0 16px;
+  border-radius: 18px;
+  border: none;
+  font-size: 24px;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Круглая кнопка с иконкой многоточия */
+.btnTableDots {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: none;
+
+  img {
+    object-fit: contain;
+  }
+
+  &:hover {
+    background: #f9fafb;
+  }
+}
+
 .btnIcon {
   width: 42px;
   height: 42px;
@@ -184,6 +222,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -192,29 +231,10 @@
 .btnAddPrimary {
   background: #2563eb;
   color: #fff;
+
   &:hover {
     background: #1d4ed8;
   }
-}
-
-.productCheckbox {
-  width: 22px;
-  height: 22px;
-  border-radius: 4px;
-  border: 1px solid #B2B3B9;
-  margin: 0 25px;
-}
-
-.btnsWrapper {
-  display: flex;
-  align-items: center;
-}
-
-.footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
 }
 
 .footerWrapper {

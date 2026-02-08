@@ -38,6 +38,11 @@
   color: #6b7280;
 }
 
+/* Лейблы и блок полей ввода — выравнивание по левому краю */
+.loginInputField {
+  text-align: left;
+}
+
 /* Поля ввода — светлая граница по макету */
 .loginInputWrapper {
   border-color: #ebebeb !important;
