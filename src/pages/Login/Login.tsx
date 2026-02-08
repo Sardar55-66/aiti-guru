@@ -62,7 +62,7 @@ export default function Login() {
           label="Логин"
           value={username}
           onChange={e => setUsername(e.target.value)}
-          placeholder="test"
+          placeholder="Введите логин"
           iconLeft={<img src={userIcon} alt="user-icon" />}
           onClear={() => setUsername('')}
           error={error && !username.trim() ? 'Заполните логин' : undefined}
@@ -85,7 +85,6 @@ export default function Login() {
               style={{ cursor: 'pointer', width: '24px', height: '24px' }}
             />
           }
-          onClear={() => setPassword('')}
           error={error && !password.trim() ? 'Заполните пароль' : undefined}
           wrapperClassName={styles.loginInputWrapper}
         />
