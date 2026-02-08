@@ -23,7 +23,6 @@
   margin-left: 80px;
 }
 
-/* Фон всей страницы — светлый серый; в отступе между хедером и таблицей виден этот же цвет */
 .productMainWrapper {
   width: 100%;
   background: #f3f4f6;
@@ -166,7 +165,6 @@
   gap: 8px;
 }
 
-/* Синяя кнопка-пилюля с плюсом (универсальный Button + кастомные стили) */
 .btnTableAdd {
   min-width: auto;
   height: 27px;
@@ -181,7 +179,6 @@
   }
 }
 
-/* Круглая кнопка с иконкой многоточия */
 .btnTableDots {
   width: 32px;
   height: 32px;
@@ -254,4 +251,27 @@
   display: inline-block;
   width: 22px;
   height: 22px;
+}
+
+.addProductDialogPaper {
+  width: 100% !important;
+  max-width: 420px !important;
+  border-radius: 34px !important;
+  padding: 40px 32px 32px !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06) !important;
+}
+
+.addProductDialogTitle {
+  padding: 0 0 20px 0 !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  color: #111827;
+}
+
+.addProductDialogContent {
+  padding: 0 0 24px 0 !important;
+}
+
+.addProductDialogActions {
+  padding: 16px 0 0 !important;
 }

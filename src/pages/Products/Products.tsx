@@ -315,10 +315,17 @@ export default function Products() {
         </>
       )}
 
-      {/* Модалка добавления товара */}
-      <Dialog open={addModalOpen} onClose={() => setAddModalOpen(false)} maxWidth="sm" fullWidth>
-        <DialogTitle>Добавить товар</DialogTitle>
-        <DialogContent>
+      {/* Модалка добавления товара — в стиле окна авторизации */}
+      <Dialog
+        open={addModalOpen}
+        onClose={() => setAddModalOpen(false)}
+        maxWidth={false}
+        PaperProps={{
+          className: styles.addProductDialogPaper,
+        }}
+      >
+        <DialogTitle className={styles.addProductDialogTitle}>Добавить товар</DialogTitle>
+        <DialogContent className={styles.addProductDialogContent}>
           <TextField
             label="Наименование"
             fullWidth
@@ -350,7 +357,7 @@ export default function Products() {
             onChange={e => setAddForm(f => ({ ...f, sku: e.target.value }))}
           />
         </DialogContent>
-        <DialogActions>
+        <DialogActions className={styles.addProductDialogActions}>
           <Button onClick={() => setAddModalOpen(false)}>Отмена</Button>
           <Button variant="contained" onClick={handleAddSubmit} disabled={!addForm.title.trim()}>
             Добавить
