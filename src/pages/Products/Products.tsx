@@ -101,6 +101,7 @@ export default function Products() {
   const [addModalOpen, setAddModalOpen] = useState(false);
   const [addForm, setAddForm] = useState({ title: '', price: '', brand: '', sku: '' });
   const [toastOpen, setToastOpen] = useState(false);
+  const [refreshSpinning, setRefreshSpinning] = useState(false);
 
   // Debounce search
   useEffect(() => {
@@ -144,6 +145,11 @@ export default function Products() {
     loadProducts();
   }, [loadProducts]);
 
+  const handleRefreshClick = useCallback(() => {
+    setRefreshSpinning(true);
+    loadProducts();
+  }, [loadProducts]);
+
   const handleAddSubmit = useCallback(() => {
     if (!addForm.title.trim()) return;
     setAddModalOpen(false);
@@ -171,6 +177,7 @@ export default function Products() {
             value={searchInput}
             onChange={e => setSearchInput(e.target.value)}
             iconLeft={<SearchIcon />}
+            onClear={() => setSearchInput('')}
           />
         </div>
       </div>
@@ -181,11 +188,16 @@ export default function Products() {
         <div className={styles.actionsRow}>
           <IconButton
             className={styles.btnIcon}
-            onClick={handleRefresh}
+            onClick={handleRefreshClick}
             disabled={loading}
             aria-label="Обновить"
           >
-            <RefreshIcon />
+            <span
+              className={refreshSpinning ? styles.refreshIconSpin : undefined}
+              onAnimationEnd={() => setRefreshSpinning(false)}
+            >
+              <RefreshIcon />
+            </span>
           </IconButton>
           <Button
             variant="contained"
