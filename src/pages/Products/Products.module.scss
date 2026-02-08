@@ -53,7 +53,7 @@
 
 .progressStrip {
   position: sticky;
-  top: 50%;
+  top:30%;
   z-index: 10;
   width: 100%;
 }
@@ -123,7 +123,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  min-height: 80vh;
   padding: 24px;
   width: 100%;
 

@@ -148,16 +148,8 @@ export default function Products() {
 
   return (
     <div className={styles.productMainWrapper}>
-      {loading ? (
-        <div className={styles.loaderOnly}>
-          <div className={styles.loader}>
-            <LinearDeterminate />
-          </div>
-        </div>
-      ) : (
-        <>
-          {/* Header */}
-          <div className={styles.header}>
+         {/* Header */}
+         <div className={styles.header}>
         <h1 className={styles.headerTitle}>Товары</h1>
         <div className={styles.searchWrap}>
           <Input
@@ -169,9 +161,8 @@ export default function Products() {
           />
         </div>
       </div>
-
-      {/* Section: Все позиции + кнопки */}
-      <div className={styles.sectionHeader}>
+       {/* Section: Все позиции + кнопки */}
+       <div className={styles.sectionHeader}>
         <h2 className={styles.sectionTitle}>Все позиции</h2>
         <div className={styles.actionsRow}>
           <IconButton
@@ -197,6 +188,17 @@ export default function Products() {
           </Button>
         </div>
       </div>
+      {loading ? (
+        <div className={styles.loaderOnly}>
+          <div className={styles.loader}>
+            <LinearDeterminate />
+          </div>
+        </div>
+      ) : (
+        <>
+       
+
+     
 
       {/* Table */}
       <TableContainer component={Paper} className={styles.productsTableWrapper} sx={{ boxShadow: 'none' }}>
